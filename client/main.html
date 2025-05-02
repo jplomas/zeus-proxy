@@ -192,5 +192,28 @@
     <p><strong>Sends:</strong> String QRL address, Integer items per page to return, Integer page number</p>
     <p><strong>Returns:</strong> Token holdings information</p>
     <p>&nbsp;</p><p>&nbsp;</p>
+    <div class="level">
+      <div class="level-left"><div class="level-item"><p class="title is-5">GetOTS</p></div>
+      <div class="level-item">
+        <code>/grpc/${network}/GetOTS</code>
+      </div>
+    </div>
+    </div>
+    <textarea id="GetOTS" class="textarea" placeholder="{ address: String, page_from: Integer, page_count: Integer, unused_ots_index_from: Integer }">{ "address": "Q0004003253c64b6478e28a521ac66fa20cc7b1d131a0b7885c7350f834f4dc9153c1eba605c8c6", "page_from": 1, "page_count": 1, "unused_ots_index_from": 0 }</textarea>
+    <div class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          <button id="GetOTS-Testnet" class="button is-small is-primary is-light level-item">
+            Testnet
+          </button>
+          <button id="GetOTS-Mainnet" class="button is-small is-primary is-light level-item">
+            Mainnet
+          </button>
+        </div>
+      </div>
+    </div>
+    <p><strong>Sends:</strong> String QRL Address, Integer page_from, Integer page_count, Integer unused_ots_index_from</p>
+    <p><strong>Returns:</strong> OTS keys for the address</p>
+    <p>&nbsp;</p><p>&nbsp;</p>
   </div>
 </template>

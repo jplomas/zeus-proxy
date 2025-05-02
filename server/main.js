@@ -88,6 +88,28 @@ Meteor.startup(() => {
           })
         })
     })
+    // GetOTS route for testnet
+    JsonRoutes.add('post', '/grpc/testnet/GetOTS', function (req, res, next) {
+      const options = req.body
+      if (options.address) {
+        options.address = Buffer.from(options.address.substring(1), 'hex')
+      }
+      console.log(req.connection.remoteAddress + ' -> POST [Grpc/Testnet] GetOTS')
+      testnet
+        .api('GetOTS', options)
+        .then((result) => {
+          JsonRoutes.sendResult(res, {
+            data: result,
+            headers,
+          })
+        })
+        .catch((error) => {
+          JsonRoutes.sendResult(res, {
+            data: error,
+            headers,
+          })
+        })
+    })
     // Routes - post
     JsonRoutes.add('post', '/grpc/testnet/:request', function (req, res, next) {
       const id = req.params.request
@@ -153,6 +175,28 @@ Meteor.startup(() => {
           const unconfirmedTxCount = { unconfirmedTransactionCount: result.transactions_unconfirmed.length }
           JsonRoutes.sendResult(res, {
             data: unconfirmedTxCount,
+            headers,
+          })
+        })
+    })
+    // GetOTS route for mainnet
+    JsonRoutes.add('post', '/grpc/mainnet/GetOTS', function (req, res, next) {
+      const options = req.body
+      if (options.address) {
+        options.address = Buffer.from(options.address.substring(1), 'hex')
+      }
+      console.log(req.connection.remoteAddress + ' -> POST [Grpc/Mainnet] GetOTS')
+      mainnet
+        .api('GetOTS', options)
+        .then((result) => {
+          JsonRoutes.sendResult(res, {
+            data: result,
+            headers,
+          })
+        })
+        .catch((error) => {
+          JsonRoutes.sendResult(res, {
+            data: error,
             headers,
           })
         })

@@ -99,6 +99,18 @@ Template.post.events({
       JSON.parse($('#GetTokensByAddress').val())
     ).then((data) => displayData(data))
   },
+  'click #GetOTS-Testnet': () => {
+    postData(
+      '/grpc/testnet/GetOTS',
+      JSON.parse($('#GetOTS').val())
+    ).then((data) => displayData(data))
+  },
+  'click #GetOTS-Mainnet': () => {
+    postData(
+      '/grpc/mainnet/GetOTS',
+      JSON.parse($('#GetOTS').val())
+    ).then((data) => displayData(data))
+  },
 })
 
 Template.modal.events({
